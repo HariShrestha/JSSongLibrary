@@ -1,0 +1,45 @@
+<div class='showsong'>
+<div class="row header">
+  <div class="col-sm">
+    <h4 style ='text-align:center'>JavaScript Songs library</h4>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm list-action-button">
+
+   <a> <button href ="#" class='btn btn-link float-right links-primary fa fa-lg action-label' (click)='sortSong(songs)' >sort</button> </a>
+    <a href="#" routerLink="add" class="btn btn-link float-right fa fa-music fa-lg action-label">Add Song</a>
+  </div>
+</div>
+
+<div class="row content">
+  <div class="col-sm-12">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Title</th>
+          <th scope="col">Artist</th>
+          <th scope="col">Release Date</th>
+          <th scope="col">Price($)</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let song of songs | async; index as i">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ song.title }}</td>
+          <td>{{ song.artist }}</td>
+          <td>{{ song.date.date }}</td>
+          <td>{{ song.price }}</td>
+          <td><button class='fa fa' (click)='editSong(song)' >Edit</button></td>
+          <td><button class='delete-label fa fa-trash-o' (click)='deleteSong(song)' >Delete</button></td>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>

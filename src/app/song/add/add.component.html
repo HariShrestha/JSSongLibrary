@@ -1,0 +1,64 @@
+<div class="row">
+  <div class="col-sm">
+    <h4 style="color:rgb(0, 153, 255);"> Add Songs</h4>
+  </div>
+</div>
+<div class='cont'>
+<form [formGroup]="songForm">
+  <div class="jumbotron col-sm-8" style="margin:auto">
+    <div class="form-group row">
+      <label for="" class="col-sm-2 col-form-label">Title</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" formControlName="title">
+        <div *ngIf="formSubmitted && songForm.get('title').errors"  class="invalid-error">
+           <div *ngIf="songForm.get('title').errors.required">title is required</div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="" class="col-sm-2 col-form-label">Artist</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" formControlName="artist">
+        <div *ngIf="formSubmitted && songForm.get('artist').errors"  class="invalid-error">
+          <div *ngIf="songForm.get('artist').errors.required">Artist is required</div>
+         </div>
+      </div>
+
+    </div>
+    <div class="form-group row">
+      <label for="" class="col-sm-2 col-form-label">Release Date</label>
+      <div class="col-sm-10">
+        <select title="" id="" class="form-control"  formControlName="date">
+            <option value="" *ngFor="let date of date | async"
+            [value]="date.date" >{{date.date}}</option>
+        </select>
+        <div *ngIf="formSubmitted && songForm.get('date').errors"  class="invalid-error">
+          <div *ngIf="songForm.get('date').errors.required">Release date is required</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="" class="col-sm-2 col-form-label">Price($)</label>
+      <div class="col-sm-4">
+        <input type="text" appNumberonly class="form-control"   formControlName="price">
+        <div *ngIf="formSubmitted && songForm.get('price').errors"  class="invalid-error">
+          <div *ngIf="songForm.get('price').errors.required">Price is required</div>
+        </div>
+      </div>
+    </div>
+    <div class = 'message'>
+      <p id= 'sub-message'>     </p>
+    </div>
+    <div class="form-group row">&nbsp;</div>
+    <div class="form-group row">
+      <label for="" class="col-sm-2 col-form-label">&nbsp;</label>
+      <div class="col-sm-10">
+          <button type="button" class="btn btn-success fa fa-floppy-o" (click)="save($event)" >&nbsp;Save</button>&nbsp;
+          <!-- <button type="button" class="btn btn-success fa fa-floppy-o" (click) ="saveAndContinue($event)" >&nbsp;Save & Continue</button>&nbsp; -->
+          <button type="button" class="btn btn-light fa fa-ban" routerLink='/songs'>&nbsp;Cancel</button>
+      </div>
+    </div>
+  </div>
+</form>
+</div>
